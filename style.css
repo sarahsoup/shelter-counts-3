@@ -1,0 +1,32 @@
+html{
+	font-family: 'Proxima Nova', Helvetica, sans-serif;
+	font-weight: 200;
+}
+
+.ratio{
+	padding-top: 40px;
+	padding-bottom: 20px;
+}
+
+.ratio-text{
+	font-size: 20px;
+}
+
+.module{
+	min-height: 400px;
+}
+
+#totalIntake, #totalOutcome {
+	font-size: 14px;
+}
+
+.labelOutcome-L, .labelOutcome-O{
+	font-size: 14px;
+}
+
+.source{
+	font-size: 12px;
+	text-align: center;
+	width: 80%;
+	margin: auto;
+}
