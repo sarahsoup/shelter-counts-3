@@ -234,7 +234,7 @@ d3.csv(link, parse, function(err,counts){
   ratioText
     .append('tspan')
     .attr('class','ratio-text')
-    .text(`For every `);
+    .text(`Today, for every `);
   ratioText
     .append('tspan')
     .attr('class','ratio-text')
@@ -243,18 +243,27 @@ d3.csv(link, parse, function(err,counts){
   ratioText
     .append('tspan')
     .attr('class','ratio-text')
-    .text(`dogs and cats that enter a shelter today, `);
+    .text(`dogs and cats that enter a shelter, `);
+  // ratioText
+  //   .append('tspan')
+  //   .attr('class','ratio-text')
+  //   .text(`today, `)
+  //   .style('font-weight','400');
   ratioText
     .append('tspan')
     .attr('class','ratio-text')
     .attr('x',(w/2)+'px')
-    .attr('dy','1.2em')
+    .attr('dy','1.4em')
+    .text(`there are `);
+  ratioText
+    .append('tspan')
+    .attr('class','ratio-text')
     .text(`${ratioOutcomeLive} `)
     .style('font-weight','400');
   ratioText
     .append('tspan')
     .attr('class','ratio-text')
-    .text(`have a live outcome, but `);
+    .text(`shelter dogs and cats that will have a live outcome, and `);
   ratioText
     .append('tspan')
     .attr('class','ratio-text')
@@ -263,13 +272,13 @@ d3.csv(link, parse, function(err,counts){
   ratioText
     .append('tspan')
     .attr('class','ratio-text')
-    .text(`does not.`);
+    .text(`that will not.`);
   ratioText
     .append('tspan')
     .attr('id','ratio-shelters')
     .attr('x',(w/2)+'px')
-    .attr('dy','2.4em')
-    .text(`These counts are provided by ${orgs.toLocaleString('en')} animal shelters in the U.S.`);
+    .attr('dy','2.8em')
+    .text(`These counts represent a single day for ${orgs.toLocaleString('en')} animal shelters in the U.S.`);
 
 
 /*------------------------bar chart------------------------*/
@@ -496,10 +505,10 @@ d3.csv(link, parse, function(err,counts){
     .style('text-anchor','middle');
 
   //labels and counts for outcome categories
-  const barOutcomeL = scaleY(sumOutcomeLive);
-  const barOutcomeO = scaleY(sumOutcome);
+  const barOutcomeL = scaleY(sumOutcomeLive/2);
+  const barOutcomeO = scaleY(sumOutcome-(sumOutcomeOther/2));
   const adjX = 10;
-  const adjY = 10;
+  const adjY = 0;
 
   const labelOutcomeSub = labels.append('g')
     .attr('class','labelOutcomeGroup')
@@ -524,7 +533,7 @@ d3.csv(link, parse, function(err,counts){
     .attr('x','0px')
     .attr('dy', '1.2em');
   textOutcomeO.append('tspan')
-    .text('Other Outcomes')
+    .text('Death or Lost')
     .style('fill',colorsOutcomeO[0])
     .style('font-weight','600')
     .attr('dy', '0.2em')
