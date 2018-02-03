@@ -1,6 +1,6 @@
 html{
-	font-family: 'Proxima Nova', Helvetica, sans-serif;
-	font-weight: 200;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: lighter;
 }
 
 .ratio{
@@ -9,24 +9,27 @@ html{
 }
 
 .ratio-text{
-	font-size: 20px;
+	font-size: 18px;
 }
 
 .module{
 	min-height: 400px;
 }
 
-#totalIntake, #totalOutcome {
+#totalIntake, #totalOutcome, #labelIntake, #labelOutcome, .labelOutcome-L, .labelOutcome-O {
 	font-size: 14px;
 }
 
-.labelOutcome-L, .labelOutcome-O{
-	font-size: 14px;
+.tooltip text{
+	font-size: 12px;
 }
 
 .source{
 	font-size: 12px;
 	text-align: center;
+	line-height: 16px;
 	width: 80%;
 	margin: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
