@@ -39,10 +39,6 @@ function parse(d){
 //load data
 d3.csv(link, parse, function(err,counts){
 
-  //filter for current month
-  // const input = 'Feb-17';
-  // const countsFilter = counts.filter(function(d){ return d.date == input});
-
   const year = counts[0].date;
   const orgs = counts[0].orgs;
 
@@ -236,6 +232,7 @@ d3.csv(link, parse, function(err,counts){
     .attr('x',(w/2)+'px')
     .attr('dy','1.4em')
     .text(`For every `);
+    // .text(`Tomorrow, for every `);
   ratioText
     .append('tspan')
     .attr('class','ratio-text')
@@ -244,7 +241,9 @@ d3.csv(link, parse, function(err,counts){
   ratioText
     .append('tspan')
     .attr('class','ratio-text')
-    .text(`shelter dogs and cats that survive today, `);
+    // .text(`shelter dogs and cats that survive today, `);
+    // .text(`shelter dogs and cats that survived yesterday, `);
+    .text(`shelter dogs and cats that will survive tomorrow, `);
   ratioText
     .append('tspan')
     .attr('class','ratio-text')
@@ -254,6 +253,7 @@ d3.csv(link, parse, function(err,counts){
     .append('tspan')
     .attr('class','ratio-text')
     .text(`will not.`);
+    // .text(`did not.`);
 
 
 /*------------------------bar chart------------------------*/
@@ -452,14 +452,18 @@ d3.csv(link, parse, function(err,counts){
     .attr('class','label-text')
     .attr('id','labelIntake')
     .attr('transform','translate(' + (barPosI+(barW/2)) + ',' + (hh+24)+ ')')
-    .text('Entering Shelter Today')
+    // .text('Entering Shelter Today')
+    // .text('Entered Shelter Yesterday')
+    .text('Will Enter Shelter')
     .style('text-anchor','middle');
   labels
     .append('text')
     .attr('class','label-text')
     .attr('id','labelOutcome')
     .attr('transform','translate(' + (barPosO+(barW/2)) + ',' + (hh+24)+ ')')
-    .text('Leaving Shelter Today')
+    // .text('Leaving Shelter Today')
+    // .text('Left Shelter Yesterday')
+    .text('Will Leave Shelter')
     .style('text-anchor','middle');
 
   //counts above bars
@@ -497,7 +501,8 @@ d3.csv(link, parse, function(err,counts){
   const textOutcomeO = labelOutcomeO.append('text');
 
   textOutcomeL.append('tspan')
-    .text('Survive')
+    .text('Will Survive')
+    // .text('Survived')
     .style('fill',colorsOutcomeL[0])
     .style('font-weight','600')
     .attr('dy', '0.2em')
@@ -507,7 +512,8 @@ d3.csv(link, parse, function(err,counts){
     .attr('x','0px')
     .attr('dy', '1.2em');
   textOutcomeO.append('tspan')
-    .text('Die or Get Lost')
+    .text('Will Die or Get Lost')
+    // .text('Died or Lost')
     .style('fill',colorsOutcomeO[0])
     .style('font-weight','600')
     .attr('dy', '0.2em')
@@ -522,6 +528,7 @@ d3.csv(link, parse, function(err,counts){
 
   d3.select('.source')
     .append('text')
-    .html(`These counts represent a single day for ${orgs.toLocaleString('en')} animal shelters in the U.S. | sourced from Shelter Animals Count`);
+    // .html(`These counts represent a single day for ${orgs.toLocaleString('en')} animal shelters in the U.S. | sourced from Shelter Animals Count`);
+    .html(`These counts are projections from ${orgs.toLocaleString('en')} animal shelters in the U.S. | sourced from Shelter Animals Count`);
 
 });
